@@ -850,7 +850,13 @@ namespace awkward {
 
       ContentPtrVec contents;
       for (auto ptr : tocarry) {
-        contents.push_back(content_.get()->carry(Index64(ptr, 0, totallen)));
+        std::shared_ptr<IndexedArray64> indexedarray =
+         std::make_shared<IndexedArray64>(
+         Identities::none(),
+         util::Parameters(),
+         Index64(ptr, 0, totallen),
+         content_);
+         contents.push_back(indexedarray.get()->simplify_optiontype());
       }
       ContentPtr recordarray =
         std::make_shared<RecordArray>(Identities::none(),
