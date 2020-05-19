@@ -27,6 +27,9 @@ docs-sphinx/_auto
 .idea
 cmake-build-debug
 .vscode
+GPATH
+GRTAGS
+GTAGS
 # ...
 
 ############################################################# LaTeX
